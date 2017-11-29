@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>ABRAJI - Bases de Dados para Jornalistas</title>
+  <meta name="description" content="Planilha colaborativa com bases de dados públicos no Brasil e de organizações internacionais">
+  <meta name="keywords" content="dados, dados abertos, jornalismo de dados, abraji, bancos de dados, Brasil">
+  <!-- FONTES DO GOOGLE -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+  <script type='text/javascript' src='js/sheetsee.js'></script>
+  <link rel='stylesheet' type='text/css' href='estilos.css'>
+  <!-- META TAGS OG - FB-->
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://voltdatalab.github.io/abraji-bases-dados">
+  <meta property="og:title" content="ABRAJI - Bases de Dados para Jornalistas">
+  <meta property="og:description" content="Planilha colaborativa com bases de dados públicos no Brasil e de organizações internacionais">
+  <meta property="og:image" content="http://abraji.org.br/static/uploads/images/helpdesks/e66178d0-12b4-47a3-9299-1c1322f3af1d.jpg">
+  <meta property="og:image:type" content="image/jpg">
+  <meta property="article:tag" content="dados, dados abertos, jornalismo de dados, abraji, bancos de dados, Brasil">
+  <style>
+    #Pagination {
+      border-top: 4px solid #ff9933;
+      margin: 10px 0px;
+      padding-top: 10px;
+      display: inline-block;
+    }
+
+    #Pagination a {
+      cursor: pointer;
+    }
+
+    .no-pag {
+      color: #acacac;
+      border: none;
+    }
+
+    .no-pag:hover {
+      color: #acacac;
+    }
+
+    input {
+      border: none;
+      margin: 10px 0px;
+      width: 200px;
+      font-size: 14px;
+      padding-bottom: 6px;
+    }
+
+    .tHeader {
+      padding: 8px;
+      cursor: pointer;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>ABRAJI - Sites e bases de dados</h1>
+      <p>O coordenador de cursos da <em>Associação Brasileiro de Jornalismo Investigativo (Abraji)</em> e especialista em jornalismo de dados Tiago Mali faz a curadoria desta planilha colaborativa com bases de dados públicos no Brasil e de organizações internacionais.</p>
+      <p>Todos(as) são convidados(as) a incluir fontes, cuidando para não repetir alguma que já esteja listada e mantendo o padrão da planilha.</p>
+      <p>Para contribuir, acesse a planilha oficial neste <a href="https://docs.google.com/spreadsheets/d/1oe4vWQkNhJ3qWZdgKeTb1rYyjPRtK4hyfCYIruzBjU0/edit#gid=0" target="_blank">spreadsheet</a>.
+        <p>
+          <input id="fullTableFilter" type="text" placeholder="Digite uma palavra chave..."></input>
+          <a class="clear">Limpar busca</a>
+    </div>
+    <hr />
+
+    <div id="fullTable">Carregando tabela...</div>
+    <br />
+    <p class="footer">Esta interface foi criada pela agência <a href="www.voltdata.info">Volt Data Lab</a></em>, utilizando GitHub Pages/Jekyll e Sheetsee.js, mas o crédito pela organização dos dados e a iniciativa é inteiramente da Abraji.</p>
+
+    <script id="fullTable_template" type="text/html">
+      <table>
+        <tr>
+          <th class="tHeader">Base de dados</th>
+          <th class="tHeader">Categoria</th>
+          <th class="tHeader">Link</th>
+          <th class="tHeader">Descrição</th>
+        </tr>
+        {{#rows}}
+        <tr>
+          <td>{{Base de dados}}</td>
+          <td>{{Categoria}}</td>
+          <td><a href="{{Link}}" target="_blank">Link externo</a></td>
+          <td>{{Descrição}}</td>
+        </tr>
+        {{/rows}}
+      </table>
+    </script>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+        var URL = "1U_c_GWI1BiJVLjz3LniAyF_O5QmV-Gwri_GDsImFC8c"
+        Tabletop.init({
+          key: URL,
+          callback: showInfo,
+          simpleSheet: true
+        })
+      })
+
+      function showInfo(data) {
+        var tableOptions = {
+          "data": data,
+          "pagination": 30,
+          "tableDiv": "#fullTable",
+          "filterDiv": "#fullTableFilter"
+        }
+        Sheetsee.makeTable(tableOptions)
+        Sheetsee.initiateTableFilter(tableOptions)
+      }
+    </script>
+</body>
