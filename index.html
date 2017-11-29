@@ -21,7 +21,7 @@
   <meta property="article:tag" content="dados, dados abertos, jornalismo de dados, abraji, bancos de dados, Brasil">
   <style>
     #Pagination {
-      border-top: 4px solid #ff9933;
+      border-top: 2px solid #ff9933;
       margin: 10px 0px;
       padding-top: 10px;
       display: inline-block;
@@ -53,6 +53,66 @@
       cursor: pointer;
       text-align: left;
     }
+
+    /*Botão para hide/show explicação */
+article {
+  margin-bottom: 7%;
+  position: relative;
+}
+article section:last-of-type {
+  display: none;
+  visibility: hidden;
+}
+section {
+  -webkit-transition: .125s linear;
+  -moz-transition: .125s linear;
+  -ms-transition: .125s linear;
+  -o-transition: .125s linear;
+  transition: .125s linear;
+}
+input[type=checkbox] {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+[for="read_more"] {
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
+  text-align: left;
+  padding: .3rem;
+  background-color: rgba(0, 0, 0, .1);
+  font-size: .8em;
+}
+[for="read_more"]:hover {
+  background: rgba(0, 0, 0, .2);
+}
+[for="read_more"] span:last-of-type {
+  display: none;
+  visibility: hidden;
+}
+input[type=checkbox]:checked ~ section {
+  display: block;
+  visibility: visible;
+  margin-top: 20px;
+  max-width: 600px;
+}
+input[type=checkbox]:checked ~ figure {
+  max-width: 600px;
+}
+input[type=checkbox]:checked ~ [for="read_more"] span:first-of-type {
+  display: none;
+  visibility: hidden;
+}
+input[type=checkbox]:checked ~ [for="read_more"] span:last-of-type {
+  display: block;
+  visibility: visible;
+}
   </style>
 </head>
 
@@ -62,16 +122,25 @@
       <h1>ABRAJI - Sites e bases de dados</h1>
       <p>O coordenador de cursos da <em>Associação Brasileiro de Jornalismo Investigativo (Abraji)</em> e especialista em jornalismo de dados Tiago Mali faz a curadoria desta planilha colaborativa com bases de dados públicos no Brasil e de organizações internacionais.</p>
       <p>Todos(as) são convidados(as) a incluir fontes, cuidando para não repetir alguma que já esteja listada e mantendo o padrão da planilha.</p>
-      <p>Para contribuir, acesse a planilha oficial neste <a href="https://docs.google.com/spreadsheets/d/1oe4vWQkNhJ3qWZdgKeTb1rYyjPRtK4hyfCYIruzBjU0/edit#gid=0" target="_blank">spreadsheet</a>.
-        <p>
+      <p>Para contribuir, acesse a planilha oficial neste <a href="https://docs.google.com/spreadsheets/d/1oe4vWQkNhJ3qWZdgKeTb1rYyjPRtK4hyfCYIruzBjU0/edit#gid=0" target="_blank">spreadsheet</a>.</p>
           <input id="fullTableFilter" type="text" placeholder="Digite uma palavra chave..."></input>
           <a class="clear">Limpar busca</a>
+          <article>
+          <input type="checkbox" id="read_more" role="button">
+          <label for="read_more" onclick=""><span>Clique aqui para ver um gráfico</span><span>Esconder gráfico</span></label>
+            <section>
+              <h4>Bancos de dados por categorias unificadas</h4>
+              <small><em>Categorias unificadas servem para padronizar as informações, a fim de produzir esse tipo de gráfico. Não deixe de conferir as categorias livres criadas pelos colaboradores.</em></small>
+                <iframe width="100%" height="371" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTeuJfpZMVtbXSAnDWgxDDAyTVTP8Hwg5c14M7Vt7VyLorMXOhNItozNIOy0As5IVIlI6fk-gF3JP8W/pubchart?oid=711272466&amp;format=interactive"></iframe>
+            </section>
+          </article>
     </div>
     <hr />
 
     <div id="fullTable">Carregando tabela...</div>
     <br />
-    <p class="footer">Esta interface foi criada pela agência <a href="www.voltdata.info">Volt Data Lab</a></em>, utilizando GitHub Pages/Jekyll e Sheetsee.js, mas o crédito pela organização dos dados e a iniciativa é inteiramente da Abraji. O código desse projeto está no <a href="http://github.com/voltdatalab/abraji-bases-dados">GitHub do Volt</a>.</p>
+    <p class="footer">Esta interface foi criada pela agência <a href="www.voltdata.info">Volt Data Lab</a></em>, utilizando GitHub Pages/Jekyll e Sheetsee.js, mas o crédito pela organização dos dados e a iniciativa é inteiramente da Abraji. O código desse projeto está
+      no <a href="http://github.com/voltdatalab/abraji-bases-dados">GitHub do Volt</a>.</p>
 
     <script id="fullTable_template" type="text/html">
       <table>
