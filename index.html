@@ -153,8 +153,8 @@ input[type=checkbox]:checked ~ [for="read_more"] span:last-of-type {
         </tr>
         {{#rows}}
         <tr>
-          <td>{{Base de dados}}</td>
-          <td>{{Categorias Livres}}</td>
+          <td>{{Nome}}</td>
+          <td>{{Categoria}}</td>
           <td>{{Categoria Unificada}}</td>
           <td><a href="{{Link}}" target="_blank">Link externo</a></td>
           <td>{{Descrição}}</td>
@@ -165,7 +165,8 @@ input[type=checkbox]:checked ~ [for="read_more"] span:last-of-type {
 
     <script type="text/javascript">
       document.addEventListener('DOMContentLoaded', function() {
-        var URL = "1U_c_GWI1BiJVLjz3LniAyF_O5QmV-Gwri_GDsImFC8c"
+        //https://docs.google.com/spreadsheets/d/1oe4vWQkNhJ3qWZdgKeTb1rYyjPRtK4hyfCYIruzBjU0/edit#gid=0
+        var URL = "1oe4vWQkNhJ3qWZdgKeTb1rYyjPRtK4hyfCYIruzBjU0"
         Tabletop.init({
           key: URL,
           callback: showInfo,
